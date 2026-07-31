@@ -1,7 +1,7 @@
 <!-- Banner Image Placeholder -->
 <div align="center">
   <a href="https://github.com/MineshShaw">
-    <img src="https://via.placeholder.com/1500x400/0D1117/FF00FF?text=++[+INSERT_NEON_CYBERPUNK_BANNER_HERE+]+" alt="Profile Banner" />
+    <img src="./banner.png" alt="Profile Banner" />
   </a>
 </div>
 
