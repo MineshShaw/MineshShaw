@@ -1,34 +1,42 @@
-name: Generate Dark Neon Snake
+name: Generate Professional Metrics
 
 on:
   schedule:
     - cron: "0 0 * * *" # Runs daily at midnight
-  workflow_dispatch: # Allows you to run it manually
+  workflow_dispatch:
   push:
     branches:
-    - main
+      - main
 
-# THIS IS THE FIX: Grants the bot permission to push the image to your repo
 permissions:
   contents: write
 
 jobs:
-  build:
+  github-metrics:
     runs-on: ubuntu-latest
     steps:
-      - name: Generate Snake Animation
-        uses: Platane/snk@v3
+      - name: Generate Developer Dashboard
+        uses: lowlighter/metrics@latest
         with:
-          github_user_name: ${{ github.repository_owner }}
-          outputs: |
-            dist/github-snake-neon.svg?color_snake=#FF00FF&color_dots=#0D1117,#4A0080,#BF00FF,#00FFFF,#39FF14
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
-      - name: Push to Output Branch
-        uses: crazy-max/ghaction-github-pages@v3.1.0
-        with:
-          target_branch: output
-          build_dir: dist
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          filename: metrics.svg
+          config_theme: synthwave
+          
+          # Core stats (Disables the redundant commit calendar)
+          base: header, repositories
+          base_indepth: yes
+          
+          # Plugin 1: Lines of code added/deleted
+          plugin_lines: yes
+          plugin_lines_history_limit: 1
+          plugin_lines_repositories_limit: 4
+          plugin_lines_sections: base
+          
+          # Plugin 2: Accurate language breakdown
+          plugin_languages: yes
+          plugin_languages_details: percentage
+          
+          # Plugin 3: Issue & PR Follow-up (Shows engineering maturity)
+          plugin_followup: yes
+          plugin_followup_sections: repositories
+          plugin_followup_indepth: yes
