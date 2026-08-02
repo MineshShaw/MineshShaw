@@ -66,6 +66,12 @@
 
 <div align="center">
   <picture>
+    <img src="https://raw.githubusercontent.com/MineshShaw/MineshShaw/output/github-snake-neon.svg" alt="GitHub Contribution Snake" />
+  </picture>
+</div>
+<br>
+<div align="center">
+  <picture>
     <img src="metrics.svg" alt="Metrics Dashboard" />
   </picture>
 </div>
