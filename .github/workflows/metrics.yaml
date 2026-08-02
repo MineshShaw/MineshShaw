@@ -1,4 +1,4 @@
-name: Generate Fast Metrics
+name: Generate Metrics
 
 on:
   schedule:
@@ -20,17 +20,26 @@ jobs:
         with:
           token: ${{ secrets.METRICS_TOKEN }}
           filename: metrics.svg
-          config_theme: synthwave
-          
-          # Core stats - crucially tells the API to IGNORE forked repositories
           base: header, repositories
           repositories_forks: no
-          
-          # Accurate language breakdown showing only your actual code
           plugin_languages: yes
           plugin_languages_details: percentage
           plugin_languages_limit: 6
-          
-          # Issue & PR Follow-up
           plugin_followup: yes
           plugin_followup_sections: repositories
+
+          extras_css: |
+            :root {
+              --color-calendar-graph-day-bg: #0D1117;
+              --color-calendar-graph-day-L1-bg: #4A0080;
+              --color-calendar-graph-day-L2-bg: #BF00FF;
+              --color-calendar-graph-day-L3-bg: #00FFFF;
+              --color-calendar-graph-day-L4-bg: #39FF14;
+            }
+            body { 
+              background-color: #0D1117 !important;
+              color: #FF00FF !important;
+            }
+            h2, h3, h1 {
+              color: #00FFFF !important;
+            }
