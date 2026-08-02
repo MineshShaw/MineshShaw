@@ -65,7 +65,9 @@
 ### 📊 ＳＴＡＴＳ  &  ＡＣＴＩＶＩＴＹ
 
 <div align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=MineshShaw&theme=synthwave" alt="GitHub Profile Summary" />
+  <picture>
+    <img src="https://raw.githubusercontent.com/MineshShaw/MineshShaw/output/dist/github-snake-neon.svg" alt="GitHub Contribution Snake" />
+  </picture>
 </div>
 <br>
 <div align="center">
@@ -77,9 +79,9 @@
 ### 📬 ＣＯＮＴＡＣＴ  ＮＥＴＷＯＲＫ
 
 <div align="center">
-  <picture>
-    <img src="https://raw.githubusercontent.com/MineshShaw/MineshShaw/output/dist/github-snake-neon.svg" alt="GitHub Contribution Snake" />
-  </picture>
+  <a href="mailto:mineshshaw2007@gmail.com">
+    <img src="https://img.shields.io/badge/Email-00FFFF?style=for-the-badge&logo=gmail&logoColor=white&labelColor=000000" alt="Email" />
+  </a>
   <a href="https://linkedin.com/in/minesh-shaw">
     <img src="https://img.shields.io/badge/LinkedIn-FF00FF?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=000000" alt="LinkedIn" />
   </a>
