@@ -1,4 +1,4 @@
-name: Generate Metrics
+name: Generate Metrics & Streak
 
 on:
   schedule:
@@ -12,6 +12,7 @@ permissions:
   contents: write
 
 jobs:
+  # JOB 1: Your developer dashboard
   github-metrics:
     runs-on: ubuntu-latest
     steps:
@@ -28,18 +29,36 @@ jobs:
           plugin_followup: yes
           plugin_followup_sections: repositories
 
-          extras_css: |
-            :root {
-              --color-calendar-graph-day-bg: #0D1117;
-              --color-calendar-graph-day-L1-bg: #4A0080;
-              --color-calendar-graph-day-L2-bg: #BF00FF;
-              --color-calendar-graph-day-L3-bg: #00FFFF;
-              --color-calendar-graph-day-L4-bg: #39FF14;
-            }
-            body { 
-              background-color: #0D1117 !important;
-              color: #FF00FF !important;
-            }
-            h2, h3, h1 {
-              color: #00FFFF !important;
-            }
+  # JOB 2: Your streak stats
+  streak-stats:
+    needs: github-metrics # Waits for Job 1 to finish to avoid git conflicts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        
+      - name: Generate Streak SVG
+        uses: be-next/github-streak-stats-action@v1
+        with:
+          username: ${{ github.repository_owner }}
+          token: ${{ secrets.METRICS_TOKEN }}
+          output-path: streak.svg
+          hide-border: true
+          # Custom Synthwave Colors (No '#' needed)
+          background: 0D1117
+          currStreakNum: FF00FF
+          sideNums: 00FFFF
+          currStreakLabel: 39FF14
+          sideLabels: 39FF14
+          dates: BF00FF
+          ring: FF00FF
+          fire: FF00FF
+          
+      - name: Commit and Push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git pull origin main
+          git add streak.svg
+          git commit -m "Update streak stats" || exit 0
+          git push
