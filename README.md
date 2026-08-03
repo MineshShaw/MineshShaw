@@ -77,7 +77,7 @@
 </div>
 <br>
 <div align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=MineshShaw&theme=synthwave&hide_border=true&background=0D1117" alt="GitHub Streak" height="195"/>
+  <img src="streak.svg" alt="GitHub Streak" height="195"/>
 </div>
 
 ---
